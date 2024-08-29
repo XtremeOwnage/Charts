@@ -106,14 +106,15 @@
   color: 'FBCA04'
   description: 'Issues or pull requests that should not be auto-closed due to inactivity.'
 
-- name: lifecycle/rotten
-  color: 'FBCA04'
-  description: 'Issues eligable for auto-closure due to extended inactivity.'
-
 - name: lifecycle/stale
   color: 'FBCA04'
   description: 'Issues or pull requests that have become inactive and need attention.'
   
+- name: lifecycle/abandoned
+  color: 'FBCA04'
+  description: 'Issues eligable for auto-closure due to extended inactivity.'
+  aliases:
+    - lifecycle/rotten
 ###################################################################################################################################
 ###### Priority, Indicates the priority of a particular issue or PR.
 ###### New / Un-triaged tickets will be needs-priority.
