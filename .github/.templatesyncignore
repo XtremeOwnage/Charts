@@ -1,0 +1,6 @@
+.github/workflows/sync-upstream-repo.yml
+.github/workflows/update-labels.yml
+.github/dependabot.yml.*
+README.md
+SECURITY.md
+LICENSE
