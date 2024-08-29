@@ -8,13 +8,18 @@ on:
         required: false
         default: false
         type: boolean
+      delete-other:
+        description: "Should labels not defined in configuration be deleted?"
+        required: false
+        default: false
+        type: boolean    
         
 permissions:
   # This job will need write permissions to issues (to manage labels)
   issues: write
   
 jobs:
-  sync:
+  sync-labels:
     # This job syncs labels from an upstream template repo.
     name: Sync Labels    
     runs-on: ubuntu-latest
@@ -26,9 +31,13 @@ jobs:
 
         # If you want the action just to show you the preview of the changes, without actually editing the labels, set this to true
         dry-run: ${{ inputs.dry-run }}
-  repo-sync:
+        
+        # This, will delete other lables not defined.
+        delete-other-labels: ${{ inputs.delete-other }}
+        
+  sync-template-repo:
     # This job will sync issue templates, and other files from an upstream repo.
-    name: Sync Upstream 
+    name: Sync Template Repo 
     runs-on: ubuntu-latest
     # https://docs.github.com/en/actions/using-jobs/assigning-permissions-to-jobs
     permissions:
