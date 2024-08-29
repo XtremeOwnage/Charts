@@ -14,15 +14,14 @@ on:
         default: false
         type: boolean    
         
-permissions:
-  # This job will need write permissions to issues (to manage labels)
-  issues: write
-  
 jobs:
   sync-labels:
     # This job syncs labels from an upstream template repo.
     name: Sync Labels    
     runs-on: ubuntu-latest
+    permissions:
+      # This job will need write permissions to issues (to manage labels)
+      issues: write
     steps:
     - uses: EndBug/label-sync@v2
       with:
@@ -43,7 +42,7 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
-
+      actions: write
     steps:
       # To use this repository's private action, you must check out the repository
       - name: Checkout
