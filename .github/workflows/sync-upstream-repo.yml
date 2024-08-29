@@ -48,12 +48,15 @@ jobs:
       # To use this repository's private action, you must check out the repository
       - name: Checkout
         # Checkout the current repo.
-        # https://github.com/actions/checkout#usage
+        # https://github.com/actions/checkout#usage        
         uses: actions/checkout@v4
 
       - name: actions-template-sync
+        # Syncs files from a template repo, to the current repo.
+        # https://github.com/marketplace/actions/actions-template-sync
         uses: AndreasAugustin/actions-template-sync@v2
         with:
           source_repo_path: ${{ vars.TEMPLATE_REPO }}
           upstream_branch: ${{ vars.TEMPLATE_REPO_BRANCH }}
           pr_labels: area/github/templates,kind/documentation,priority/normal,triage/accepted
+          pr_title: Merge defaults from ${{ vars.TEMPLATE_REPO }}/${{ vars.TEMPLATE_REPO_BRANCH }}
